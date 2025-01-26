@@ -11,7 +11,7 @@ class Oferta extends Model
 
     // Definir las columnas que se pueden asignar masivamente
     protected $fillable = [
-        'usuario_id', 'latitud', 'longitud', 'cantidad', 'precio',
+        'usuario_id', 'latitud', 'longitud', 'cantidad', 'precio','material', 'image'//campos uevos material y image 
     ];
 
     // Relación con el modelo Usuario (Vendedor)
@@ -25,4 +25,9 @@ class Oferta extends Model
     {
         return $this->hasMany(HistorialOferta::class);
     }
+    public function getImageUrlAttribute()
+{
+    return $this->image ? asset('storage/' . $this->image) : null;
+}
+
 }
